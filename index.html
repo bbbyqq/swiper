@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /*消除鼠标长按双击出现的蓝底*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .content {
+            display: flex;
+            height: 500px;
+            width: 888px;
+            overflow: hidden;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .before {
+            color: #ffffff;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            cursor: pointer;
+            font-size: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            width: 30px;
+            text-align: center;
+            height: 30px;
+            margin-left: 20px;
+            z-index: 99;
+        }
+
+        .before:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .after {
+            color: #ffffff;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            cursor: pointer;
+            font-size: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            width: 30px;
+            text-align: center;
+            height: 30px;
+            margin-right: 20px;
+            z-index: 99;
+        }
+
+        .after:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper {
+            height: 500px;
+            width: 888px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="before before1" onclick="handlePre('swiper1')"><</div>
+    <img class="swiper swiper1" src="./img/swiper1.jpg" alt="">
+    <div class="after after1" onclick="handleNext('swiper1')">></div>
+
+    <div class="before before2" onclick="handlePre('swiper2')"><</div>
+    <img class="swiper swiper2" src="./img/swiper2.jpg" alt="">
+    <div class="after after2" onclick="handleNext('swiper2')">></div>
+
+    <div class="before before3" onclick="handlePre('swiper3')"><</div>
+    <img class="swiper swiper3" src="./img/swiper3.jpg" alt="">
+    <div class="after after3" onclick="handleNext('swiper3')">></div>
+</div>
+
+<script>
+    const content = document.querySelector('.content')
+    const swiper1 = document.querySelector('.swiper1')
+    const swiper2 = document.querySelector('.swiper2')
+    const swiper3 = document.querySelector('.swiper3')
+    const before1 = document.querySelector('.before1')
+    const after1 = document.querySelector('.after1')
+    const before2 = document.querySelector('.before2')
+    const after2 = document.querySelector('.after2')
+    const before3 = document.querySelector('.before3')
+    const after3 = document.querySelector('.after3')
+
+    window.onload = function () {
+        before2.style.display = 'none'
+        after2.style.display = 'none'
+        before3.style.display = 'none'
+        after3.style.display = 'none'
+    }
+
+    // 上一张
+    function handlePre(val) {
+        switch (val) {
+            case 'swiper1':
+                before1.style.display = 'none'
+                after1.style.display = 'none'
+                before2.style.display = 'none'
+                after2.style.display = 'none'
+                before3.style.display = 'block'
+                after3.style.display = 'block'
+                swiper1.style.marginLeft = '-888px'
+                swiper2.style.marginLeft = '-888px'
+                break
+            case 'swiper2':
+                before1.style.display = 'block'
+                after1.style.display = 'block'
+                before2.style.display = 'none'
+                after2.style.display = 'none'
+                before3.style.display = 'none'
+                after3.style.display = 'none'
+                swiper1.style.marginLeft = '0'
+                break
+            case 'swiper3':
+                before1.style.display = 'none'
+                after1.style.display = 'none'
+                before2.style.display = 'block'
+                after2.style.display = 'block'
+                before3.style.display = 'none'
+                after3.style.display = 'none'
+                swiper2.style.marginLeft = '0'
+                break
+        }
+    }
+
+    // 下一张
+    function handleNext(val) {
+        switch (val) {
+            case 'swiper1':
+                before1.style.display = 'none'
+                after1.style.display = 'none'
+                before2.style.display = 'block'
+                after2.style.display = 'block'
+                before3.style.display = 'none'
+                after3.style.display = 'none'
+                swiper1.style.marginLeft = '-888px'
+                break
+            case 'swiper2':
+                before1.style.display = 'none'
+                after1.style.display = 'none'
+                before2.style.display = 'none'
+                after2.style.display = 'none'
+                before3.style.display = 'block'
+                after3.style.display = 'block'
+                swiper2.style.marginLeft = '-888px'
+                break
+            case 'swiper3':
+                before1.style.display = 'block'
+                after1.style.display = 'block'
+                before2.style.display = 'none'
+                after2.style.display = 'none'
+                before3.style.display = 'none'
+                after3.style.display = 'none'
+                swiper1.style.marginLeft = '0'
+                swiper2.style.marginLeft = '0'
+                break
+        }
+    }
+</script>
+</body>
+</html>
